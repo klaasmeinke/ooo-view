@@ -29,7 +29,7 @@ import (
 )
 
 const (
-	serviceName     = "calendar-ui"
+	serviceName     = "ooo-view"
 	clientSecretKey = "client-secret"
 	tokenKey        = "oauth-token"
 )
