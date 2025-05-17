@@ -1,9 +1,9 @@
-# team-ooo
+# ooo-events
 
 View a calendar of Google Group OOO events from your CLI.
 
 ```
-% team-ooo --weeks 2 team@example.com
+% ooo-events --weeks 2 team@example.com
 
 May 12 - May 18      | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
 ----------------------------------------------------------------
@@ -17,7 +17,7 @@ No OOO Events
 ----------------------------------------------------------------
 ```
 
-`team-ooo` is an easy CLI tool that provides a clear, consolidated view of out-of-office (OOO) events for members of a Google group. It fetches data directly from the Google Calendar API and displays it in an easy-to-read weekly format in your terminal.
+`ooo-events` is an easy CLI tool that provides a clear, consolidated view of out-of-office (OOO) events for members of a Google group. It fetches data directly from the Google Calendar API and displays it in an easy-to-read weekly format in your terminal.
 
 Ideal for teams to quickly see who is away without needing to manually check multiple calendars.
 
@@ -39,15 +39,15 @@ Ideal for teams to quickly see who is away without needing to manually check mul
 ### Using Go Install
 
 ```bash
-go install github.com/klaasmeinke/team-ooo@latest
+go install github.com/klaasmeinke/ooo-events@latest
 ```
 
 ### From Source
 
 ```bash
 # Clone the repository
-git clone https://github.com/klaasmeinke/team-ooo.git
-cd team-ooo
+git clone https://github.com/klaasmeinke/ooo-events.git
+cd ooo-events
 
 # Build the project
 go build
@@ -60,7 +60,7 @@ go install
 
 Basic usage:
 ```bash
-team-ooo <group-email>
+ooo-events <group-email>
 ```
 
 Options:
@@ -75,13 +75,13 @@ Options:
 Examples:
 ```bash
 # View OOO events for the next 2 weeks
-team-ooo --weeks 2 team@example.com
+ooo-events --weeks 2 team@example.com
 
 # Only show OOO events that are at least 48 hours long
-team-ooo --min-duration 48h team@example.com
+ooo-events --min-duration 48h team@example.com
 
 # Use a specific timezone
-team-ooo --timezone "America/New_York" team@example.com
+ooo-events --timezone "America/New_York" team@example.com
 ```
 
 ## Configuration
