@@ -31,6 +31,7 @@ jenny@example.com    | OOO | OOO | OOO | OOO | OOO |     |     |
 
 ## Features
 
+- Also works for individual emails
 - Customizable time range (default: 8 weeks)
 - Configurable minimum duration for OOO events
 - Timezone support
