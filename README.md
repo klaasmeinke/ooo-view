@@ -1,9 +1,14 @@
-# ooo-events
+# ooo-view
 
 View a calendar of Google Group OOO events from your CLI.
 
+## Why
+Google Calendar doesn't offer a consolidated view of out-of-office events from multiple team members — even if you have access to their individual calendars.
+
+## Solution
+
 ```
-% ooo-events --weeks 2 team@example.com
+% ooo-view --weeks 3 team@example.com
 
 May 12 - May 18      | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
 ----------------------------------------------------------------
@@ -15,11 +20,14 @@ May 19 - May 25      | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
 ----------------------------------------------------------------
 No OOO Events
 ----------------------------------------------------------------
+
+May 26 - Jun 1       | Mon | Tue | Wed | Thu | Fri | Sat | Sun |
+----------------------------------------------------------------
+jenny@example.com    | OOO | OOO | OOO | OOO | OOO |     |     |
+----------------------------------------------------------------
 ```
 
-`ooo-events` is an easy CLI tool that provides a clear, consolidated view of out-of-office (OOO) events for members of a Google group. It fetches data directly from the Google Calendar API and displays it in an easy-to-read weekly format in your terminal.
-
-Ideal for teams to quickly see who is away without needing to manually check multiple calendars.
+`ooo-view` is an easy CLI tool that provides a clear, consolidated view of out-of-office (OOO) events for members of a Google group. It fetches data directly from the Google Calendar API and displays it in an easy-to-read weekly format in your terminal.
 
 ## Features
 
@@ -39,15 +47,15 @@ Ideal for teams to quickly see who is away without needing to manually check mul
 ### Using Go Install
 
 ```bash
-go install github.com/klaasmeinke/ooo-events@latest
+go install github.com/klaasmeinke/ooo-view@latest
 ```
 
 ### From Source
 
 ```bash
 # Clone the repository
-git clone https://github.com/klaasmeinke/ooo-events.git
-cd ooo-events
+git clone https://github.com/klaasmeinke/ooo-view.git
+cd ooo-view
 
 # Build the project
 go build
@@ -60,7 +68,7 @@ go install
 
 Basic usage:
 ```bash
-ooo-events <group-email>
+ooo-view <group-email>
 ```
 
 Options:
@@ -75,13 +83,13 @@ Options:
 Examples:
 ```bash
 # View OOO events for the next 2 weeks
-ooo-events --weeks 2 team@example.com
+ooo-view --weeks 2 team@example.com
 
 # Only show OOO events that are at least 48 hours long
-ooo-events --min-duration 48h team@example.com
+ooo-view --min-duration 48h team@example.com
 
 # Use a specific timezone
-ooo-events --timezone "America/New_York" team@example.com
+ooo-view --timezone "America/New_York" team@example.com
 ```
 
 ## Configuration
