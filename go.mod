@@ -1,4 +1,4 @@
-module calendar-ui
+module github.com/klaasmeinke/ooo-view
 
 go 1.21
 
