@@ -550,6 +550,7 @@ func main() {
 	eventsByPerson := make(map[string][]*calendar.Event)
 	var mu sync.Mutex
 	var wg sync.WaitGroup
+	errChan := make(chan error, len(calendars))
 
 	for userEmail := range calendars {
 		wg.Add(1)
@@ -557,7 +558,8 @@ func main() {
 			defer wg.Done()
 			events, err := getOutOfOfficeEvents(ctx, calService, email, now, end, cfg.MinDuration, cfg.TimeZone)
 			if err != nil {
-				log.Printf("Error getting OOO events for %s: %v", email, err)
+				errChan <- fmt.Errorf("error getting OOO events for %s: %v", email, err)
+				cancel() // Cancel the context to signal other goroutines to stop
 				return
 			}
 			mu.Lock()
@@ -566,7 +568,16 @@ func main() {
 		}(userEmail)
 	}
 
-	wg.Wait()
+	// Wait for all goroutines to complete or an error to occur
+	go func() {
+		wg.Wait()
+		close(errChan)
+	}()
+
+	// Check for errors
+	if err := <-errChan; err != nil {
+		log.Fatalf("Error: %v", err)
+	}
 
 	// Display combined calendar view
 	displayCalendar(eventsByPerson, now, end)
