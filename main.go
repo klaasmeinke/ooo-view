@@ -558,8 +558,8 @@ func main() {
 			defer wg.Done()
 			events, err := getOutOfOfficeEvents(ctx, calService, email, now, end, cfg.MinDuration, cfg.TimeZone)
 			if err != nil {
-				errChan <- fmt.Errorf("error getting OOO events for %s: %v", email, err)
-				cancel() // Cancel the context to signal other goroutines to stop
+				errChan <- fmt.Errorf(" %s: %v\nAre you sure that the email address is correct?", email, err)
+				cancel()
 				return
 			}
 			mu.Lock()
